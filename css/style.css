@@ -1,0 +1,151 @@
+/* *********************************** */
+@import url(normalize.min.css);
+@import url(reset.css);
+/* *********************************** */
+/* *** ESTILOS GENERALES *** */
+/* *********************************** *
+/* VARIABLES */
+:root {
+    /* colores */
+    --color-fondoBlack: #181818;
+    --color-fondoGrey: #5c5c5c;
+    --color-fondoWhite: #fafafa;
+    --color-yellow: #f1c40f;
+    /* tipografia */
+    --fuente-titulos: "Roboto", sans-serif;
+    --fuente-texto: "Open Sans", sans-serif;
+    /* tamaños */
+    --tamano-nombre: 6rem;
+    --tamano-texto: 1rem;
+    --tamano-subtitulo: 2.5rem;
+    --tamano-boton: 1rem;
+}
+/* ******************************** */
+body {
+    background: url(../img/desktop/texture.avif),
+    radial-gradient(
+            circle,
+            rgba(207, 222, 223, 0.805) 60%,
+            rgba(57, 95, 99, 0.399) 100%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(242, 109, 20, 0.747) 50%,
+            rgba(70, 206, 221, 0.788) 100%
+        ),
+        rgba(234, 223, 11, 0.708);
+
+    font-family: var(--fuente-texto);
+    font-size: var(--tamano-texto);
+}
+/* CONTAINER */
+#container {
+    background-color: var(--color-fondoWhite);
+    max-width: 1366px;
+    margin: 0 auto;
+    box-shadow: rgba(12, 78, 84, 0.805) 8px 0px 20px,
+        rgba(163, 98, 23, 0.805) -8px 0px 20px;
+    /* GRID 1 x 3 */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+}
+/* HEADER */
+/* ********************************************** */
+header {
+    background-color: var(--color-fondoBlack);
+    color: #fff;
+    height: 80vh;
+    /* GRID 4 x 6 */
+    display: grid;
+    grid-template-columns: [margen]0.2fr [titulos]0.6fr [margen]0.2fr [menuimagen]2fr;
+    grid-template-rows: [header]80px [seapracion]2fr [texto]repeat(3, auto) [separacion]1fr;
+}
+/* Textos en mayúsculas */
+.header__tituloweb,
+.header__menu a,
+.header__boton,
+.header__nombre {
+    text-transform: uppercase;
+}
+/* Capas superiores */
+.header__subtitulo,
+.header__nombre {
+    z-index: 1;
+}
+/* Elementos de GRID */
+.header__tituloweb {
+    grid-column: 2 / span 1;
+    place-self: center;
+}
+.header__menu {
+    grid-column: 4 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--color-fondoGrey);
+    & a {
+        color: #fff;
+    }
+    & a:hover,
+    .activo {
+        padding-bottom: 3px;
+        border-bottom: 3px solid var(--color-yellow);
+    }
+}
+.header__img {
+    grid-column: 4 / span 1;
+    grid-row: 2 / -1;
+    background: url(../img/desktop/person.avif) no-repeat center top;
+    background-size: cover;
+}
+.header__subtitulo {
+    grid-column: 2 / span 3;
+    grid-row: 3 / span 1;
+    font-size: var(--tamano-subtitulo);
+}
+.header__nombre {
+    grid-column: 2 / span 3;
+    grid-row: 4 / span 1;
+    font-size: var(--tamano-nombre);
+}
+.header__boton {
+    grid-column: 2 / span 2;
+    grid-row: 5 / span 1;
+    justify-self: center;
+    /* boton */
+    font-size: var(--tamano-boton);
+    background-color: var(--color-yellow);
+    padding: 10px 20px;
+    color: var(--color-fondoBlack);
+    font-weight: 900;
+}
+
+/* MAIN */
+/* ********************************************** */
+.main {
+    padding: 80px 120px;
+    background-color: var(--color-fondoWhite);
+    /* GRID 4 x 4 */
+    display: grid;
+    grid-template-columns: 1fr 0.2fr 0.5fr 0.5fr;
+    grid-template-rows: repeat(3, auto);
+
+    & .main__imagen {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 3;
+    }
+
+    & .main__subtitulo {
+      grid-column: 3 / span 1;
+    }
+    & .main__titulo {
+      grid-column: 3 / span 1;
+      grid-row: 2 / span 1;
+    }
+    & .main__parrafoarriba, .main__parrafoabajo {
+      grid-column: 3 / span 2;
+      grid-row: 3 / span 1;
+    }
+}
