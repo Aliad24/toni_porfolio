@@ -9,6 +9,7 @@
     /* colores */
     --color-fondoBlack: #181818;
     --color-fondoGrey: #5c5c5c;
+    --color-fondoMain: #e3e3e3;
     --color-fondoWhite: #fafafa;
     --color-yellow: #f1c40f;
     /* tipografia */
@@ -19,11 +20,14 @@
     --tamano-texto: 1rem;
     --tamano-subtitulo: 2.5rem;
     --tamano-boton: 1rem;
+    /* Efectos */
+    --border: 5px solid var(--color-yellow);
+    --sombra: -40px -40px 0px var(--color-yellow);
 }
 /* ******************************** */
 body {
     background: url(../img/desktop/texture.avif),
-    radial-gradient(
+        radial-gradient(
             circle,
             rgba(207, 222, 223, 0.805) 60%,
             rgba(57, 95, 99, 0.399) 100%
@@ -33,7 +37,7 @@ body {
             rgba(242, 109, 20, 0.747) 50%,
             rgba(70, 206, 221, 0.788) 100%
         ),
-        rgba(234, 223, 11, 0.708);
+        var(--color-yellow);
 
     font-family: var(--fuente-texto);
     font-size: var(--tamano-texto);
@@ -91,7 +95,7 @@ header {
     & a:hover,
     .activo {
         padding-bottom: 3px;
-        border-bottom: 3px solid var(--color-yellow);
+        border-bottom: var(--border);
     }
 }
 .header__img {
@@ -125,27 +129,132 @@ header {
 /* MAIN */
 /* ********************************************** */
 .main {
-    padding: 80px 120px;
-    background-color: var(--color-fondoWhite);
+    padding: 80px 200px;
+    background-color: var(--color-fondoMain);
     /* GRID 4 x 4 */
     display: grid;
-    grid-template-columns: 1fr 0.2fr 0.5fr 0.5fr;
-    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 1fr 0.2fr 0.3fr 0.5fr;
+    grid-template-rows: repeat(2, auto) 1fr;
 
     & .main__imagen {
         grid-column: 1 / span 1;
         grid-row: 1 / span 3;
+        box-shadow: var(--sombra);
     }
-
     & .main__subtitulo {
-      grid-column: 3 / span 1;
+        grid-column: 3 / span 1;
+        font-size: var(--fuente-texto);
     }
     & .main__titulo {
-      grid-column: 3 / span 1;
-      grid-row: 2 / span 1;
+        grid-column: 3 / span 1;
+        grid-row: 2 / span 1;
+        font-size: var(--tamano-subtitulo);
+        background: linear-gradient(
+            0deg,
+            var(--color-yellow) 0%,
+            var(--color-yellow) 50%,
+            transparent 50%
+        );
     }
-    & .main__parrafoarriba, .main__parrafoabajo {
-      grid-column: 3 / span 2;
-      grid-row: 3 / span 1;
+    & .main__textos {
+        grid-column: 3 / span 2;
+        grid-row: 3 / span 1;
+    }
+}
+
+/* FOOTER */
+/* ********************************************** */
+footer {
+    padding: 80px 200px;
+    /* TITULOS y NAVEGACIÓN */
+    & .footer__titulos {
+        display: flex;
+        flex-direction: column;
+        & .footer__titulo {
+            display: flex;
+            justify-content: center;
+            font-size: var(--tamano-subtitulo);
+        }
+        & .footer__subtitulo {
+            display: flex;
+            justify-content: center;
+            margin: 0 400px;
+            line-height: 2;
+            font-size: var(--fuente-texto);
+            background: linear-gradient(
+                0deg,
+                var(--color-yellow) 0%,
+                var(--color-yellow) 50%,
+                transparent 50%
+            );
+        }
+        & .footer__menu {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+        }
+    }
+    /* GALERIA */
+    & .footer__galeria {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(3, 300px);
+        grid-template-rows: repeat(3, 300px);
+        gap: 10px;
+        & a {
+            border-radius: 10px;
+            filter: grayscale(100%);
+        }
+        & a:hover{
+            filter: initial;
+            transition: 0.3s all;
+            border: var(--border);
+         
+        }
+        & a:nth-child(1) {
+            background: url(../img/desktop/person.avif) no-repeat center center/cover ;
+        }
+        & a:nth-child(2) {
+            background: url(../img/desktop/person.avif) center center/cover no-repeat;
+        }
+        & a:nth-child(3) {
+            background: url(../img/desktop/person.avif) no-repeat center center/cover;
+        }
+        & a:nth-child(4) {
+            background: url(../img/desktop/person.avif) no-repeat center center/cover;
+        }
+        & a:nth-child(5) {
+            background: url(../img/desktop/person.avif) no-repeat center center/cover;
+        }
+        & a:nth-child(5) {
+            background: url(../img/desktop/person.avif) no-repeat center center/cover;
+        }
+        & a:nth-child(6) {
+            background: url(../img/desktop/person.avif) no-repeat center center/cover;
+        }
+        & a:nth-child(7) {
+            background: url(../img/desktop/person.avif) no-repeat center center/cover;
+        }
+        & a:nth-child(8) {
+            background: url(../img/desktop/person.avif) no-repeat center center/cover;
+        }
+        & a:nth-child(9) {
+            background: url(../img/desktop/person.avif) no-repeat center center/cover;
+        }
+    }
+    /* BOTON */
+    & .footer__boton {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        & .footer__loadmore {
+            font-size: var(--tamano-boton);
+            background-color: var(--color-fondoBlack);
+            padding: 10px 20px;
+            color: var(--color-fondoWhite);
+            font-weight: 900;
+            border-radius: 50px;
+        }
     }
 }
